@@ -8,11 +8,11 @@
 	</parent>
 
 	<groupId>org.n52.wps.project.riesgos</groupId>
-	<artifactId>cigiden-process-wrapper</artifactId>
+	<artifactId>quakeledger-process-wrapper</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 
-	<inceptionYear>2017</inceptionYear>
-	<url>http://52north.org</url>
+	<inceptionYear>2019</inceptionYear>
+	<url>http://gfz-potsdam.de</url>
 
 	<licenses>
 		<license>
