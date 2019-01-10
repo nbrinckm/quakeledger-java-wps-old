@@ -5,25 +5,9 @@
 	xml:lang="en-US" service="WPS" version="1.0.0">
 	<ProcessDescription statusSupported="true"
 		storeSupported="true" wps:processVersion="1.0.0">
-		<ows:Identifier>org.n52.wps.project.riesgos.InterTxt</ows:Identifier>
-		<ows:Title>CIGIDEN process wrapper</ows:Title>
+		<ows:Identifier>org.n52.wps.project.riesgos.Quakeledger</ows:Identifier>
+		<ows:Title>Quakeledger process wrapper</ows:Title>
 		<DataInputs>
-			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>input-csv</ows:Identifier>
-				<ows:Title>CSV input</ows:Title>
-				<ComplexData>
-					<Default>
-						<Format>
-							<MimeType>text/csv</MimeType>
-						</Format>
-					</Default>
-					<Supported>
-						<Format>
-							<MimeType>text/csv</MimeType>
-						</Format>
-					</Supported>
-				</ComplexData>
-			</Input>
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>

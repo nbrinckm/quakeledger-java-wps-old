@@ -22,9 +22,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class InterTxt extends AbstractAlgorithm {
+public class Quakeledger extends AbstractAlgorithm {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(InterTxt.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(Quakeledger.class);
 
     private List<String> errors = new ArrayList<>();
 
@@ -32,23 +32,21 @@ public class InterTxt extends AbstractAlgorithm {
 
     private String workspacePath = "/usr/share/riesgos/";
 
-	private Object inputdataID = "input-csv";
-
-    public InterTxt() {}
+    public Quakeledger() {}
 
     @Override
     public List<String> getErrors() {
         return errors;
     }
 
-    public String runScript(String argumentString) throws ExceptionReport {
+    public String runScript() throws ExceptionReport {
         LOGGER.info("Executing python script.");
 
         try {
 
             Runtime rt = Runtime.getRuntime();
 
-            String command = getCommand(argumentString);
+            String command = getCommand();
 
             Process proc = rt.exec(command, new String[]{}, new File(workspacePath));
 
@@ -96,23 +94,17 @@ public class InterTxt extends AbstractAlgorithm {
         throw new ExceptionReport("Could not run script", ExceptionReport.NO_APPLICABLE_CODE);
     }
 
-    private String getCommand(String argumentString) {
+    private String getCommand() {
 
-        String pythonScriptName = "inter-txt.py";
+        String pythonScriptName = "eventquery.py";
 
-        return "python " + workspacePath + File.separatorChar + pythonScriptName + " " + argumentString;
+        return "python " + workspacePath + File.separatorChar + pythonScriptName;
     }
 
     @Override
     public Map<String, IData> run(Map<String, List<IData>> inputData) throws ExceptionReport {
 
-    	List<IData> inputDataList = inputData.get(inputdataID);
-    	
-    	GenericFileData inputDataFile = ((GenericFileDataBinding)inputDataList.get(0)).getPayload();
-    	
-        String argumentString = inputDataFile.getBaseFile(false).getAbsolutePath();
-
-        String output = runScript(argumentString);
+        String output = runScript();
 
         Map<String, IData> result = new HashMap<>();
 
@@ -123,7 +115,7 @@ public class InterTxt extends AbstractAlgorithm {
 
 	@Override
     public Class<?> getInputDataType(String id) {
-        return GenericFileDataBinding.class;
+        return null; 
     }
 
     @Override
